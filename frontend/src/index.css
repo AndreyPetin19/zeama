@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply font-sans text-zeama-900 bg-zeama-50;
+    min-height: 100dvh;
+  }
+}
+
+@layer components {
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5
+           bg-zeama-600 text-white font-semibold text-sm rounded-xl
+           transition-all duration-150 ease-out shadow-zeama
+           hover:bg-zeama-700 hover:shadow-lg
+           active:scale-[0.97] disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5
+           bg-white text-zeama-700 font-semibold text-sm rounded-xl border border-zeama-200
+           transition-all duration-150 ease-out
+           hover:border-zeama-400 hover:shadow-card
+           active:scale-[0.97];
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2
+           text-zeama-600 font-semibold text-sm rounded-xl
+           transition-all duration-150 ease-out
+           hover:bg-zeama-100
+           active:scale-[0.97];
+  }
+
+  /* ── Cards ── */
+  .card {
+    @apply bg-white rounded-2xl border border-zeama-100 shadow-card;
+  }
+  .card-hover {
+    @apply card transition-all duration-200 ease-out
+           hover:shadow-card-hover hover:-translate-y-0.5;
+  }
+
+  /* ── Points pill ── */
+  .points-pill {
+    @apply inline-flex items-center gap-2 px-4 py-2
+           bg-gradient-to-r from-reward-500 to-amber-400
+           text-white font-bold text-sm rounded-full
+           shadow-pill select-none
+           transition-transform duration-150 active:scale-95;
+  }
+
+  /* ── Badges ── */
+  .badge-good   { @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700; }
+  .badge-medium { @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-700; }
+  .badge-poor   { @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-600; }
+
+  /* ── Form inputs ── */
+  .input {
+    @apply w-full px-4 py-3 rounded-xl border border-zeama-200 bg-white text-sm
+           transition-all duration-150 outline-none
+           placeholder:text-slate-400
+           focus:ring-2 focus:ring-zeama-500/20 focus:border-zeama-400
+           hover:border-zeama-300;
+  }
+  .input-error {
+    @apply border-red-300 bg-red-50 focus:ring-red-300/20 focus:border-red-400;
+  }
+  .label {
+    @apply block text-sm font-semibold text-zeama-900 mb-1.5;
+  }
+
+  /* ── Nav link ── */
+  .nav-link {
+    @apply flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium
+           text-slate-500 transition-all duration-150
+           hover:text-zeama-700 hover:bg-zeama-100;
+  }
+  .nav-link-active {
+    @apply text-zeama-700 bg-zeama-100;
+  }
+
+  /* ── Score ring ── */
+  .score-ring-circle {
+    transition: stroke-dashoffset 1.3s cubic-bezier(0.23, 1, 0.32, 1),
+                stroke 0.4s ease-out;
+  }
+
+  /* ── Shimmer skeleton ── */
+  .shimmer-bg {
+    background: linear-gradient(90deg, #ede9fe 25%, #ddd6fe 50%, #ede9fe 75%);
+    background-size: 200% 100%;
+    @apply animate-shimmer;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  .gradient-zeama {
+    background: radial-gradient(ellipse 80% 60% at 60% -10%, rgba(139,92,246,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 0% 100%, rgba(124,58,237,0.06) 0%, transparent 50%),
+                #F5F3FF;
+  }
+  .gradient-hero {
+    background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 50%, #5B21B6 100%);
+  }
+}
+
+/* Stagger helpers */
+.stagger-1 { animation-delay: 0ms; }
+.stagger-2 { animation-delay: 70ms; }
+.stagger-3 { animation-delay: 140ms; }
+.stagger-4 { animation-delay: 210ms; }
+.stagger-5 { animation-delay: 280ms; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c4b5fd; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #a78bfa; }
